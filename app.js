@@ -72,22 +72,35 @@ displayService(busObject);
 //handal booking 
 
 function handleBooking(obj) {
-    console.log("hello");
+ 
     console.log(obj);
-
+    const stringifiedObj = JSON.stringify(obj);
     const modalBody = document.getElementById("modal-body");
     modalBody.innerHTML = `
     <div class="card" style="width: 18rem;">
     <img src=${obj.imgUrl} class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Vehicle mood : ${obj.vehicle}</h5>
-      <p class="card-text">${obj.description}</p>
+        <div class="card-body">
+        <h5 class="card-title">Vehicle mood : ${obj.vehicle}</h5>
+            <p class="card-text">${obj.description}</p>
 
-      <p class="card-text"><small class="text-muted">Fare per kilo: ${obj.farePerKilo} 
+                <p class="card-text"><small class="text-muted">Fare per kilo: ${obj.farePerKilo} 
                 </small> <small class="text-muted">capasity: ${obj.capasity}
                 </small></p>
+                <div class="d-flex flex-column" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" id="searchBtn" onclick='calculateCost(${stringifiedObj})' type="submit" >Submit</button>
+                </div>
 
+        </div>
     </div>
-  </div>
     `
+}
+
+
+
+function calculateCost(obj) {
+    // const stringifiedObj = JSON.stringify(obj);
+
+    console.log(obj);
 }
