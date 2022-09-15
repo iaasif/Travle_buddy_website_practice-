@@ -28,6 +28,7 @@ var busObject = {
 
 function displayService(service) {
     const mainSection = document.getElementById("main-section");
+    const stringifiedObj = JSON.stringify(service);
     const div = document.createElement("div");
 
     div.innerHTML = `
@@ -45,7 +46,7 @@ function displayService(service) {
                 </small> <small class="text-muted">capasity: ${service.capasity}
                 </small></p>
                 <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-primary"  data-bs-toggle="modal" onclick='handleBooking(${stringifiedObj})' data-bs-target="#exampleModal">
                         Launch demo modal
                         </button>
 
@@ -56,6 +57,7 @@ function displayService(service) {
 </div>
     `
     mainSection.appendChild(div);
+
 
 }
 
@@ -68,3 +70,24 @@ displayService(busObject);
 
 
 //handal booking 
+
+function handleBooking(obj) {
+    console.log("hello");
+    console.log(obj);
+
+    const modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML = `
+    <div class="card" style="width: 18rem;">
+    <img src=${obj.imgUrl} class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Vehicle mood : ${obj.vehicle}</h5>
+      <p class="card-text">${obj.description}</p>
+
+      <p class="card-text"><small class="text-muted">Fare per kilo: ${obj.farePerKilo} 
+                </small> <small class="text-muted">capasity: ${obj.capasity}
+                </small></p>
+
+    </div>
+  </div>
+    `
+}
