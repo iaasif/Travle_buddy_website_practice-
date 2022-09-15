@@ -42,7 +42,13 @@ function displayService(service) {
                 <h5 class="card-title">Transport mood : ${service.vehicle}</h5>
                 <p class="card-text">${service.description}</p>
                 <p class="card-text"><small class="text-muted">Fare per kilo: ${service.farePerKilo} 
-                capasity: ${service.capasity}</small></p>
+                </small> <small class="text-muted">capasity: ${service.capasity}
+                </small></p>
+                <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Launch demo modal
+                        </button>
+
             </div>
         </div>
         
@@ -57,4 +63,8 @@ function displayService(service) {
 
 
 displayService(carObject);
+displayService(bikeObject);
 displayService(busObject);
+
+
+//handal booking 
