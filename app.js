@@ -23,14 +23,14 @@ var busObject = {
 
 
 //
-const servicesArray = [bikeObject,carObject,busObject];
+const servicesArray = [bikeObject, carObject, busObject];
 
 
 
 
 
-function displayAllArticles (arr){
-    for ( let i=0;i <arr.length;i++){
+function displayAllArticles(arr) {
+    for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
         // console.log(element);
         displayService(element)
@@ -136,5 +136,37 @@ function calculateCost(obj) {
     fareDiv.innerHTML = quantity * distance * obj.farePerKilo;
     console.log(fareDiv);
 
-    
+
 }
+
+
+
+
+document.getElementById("search-btn").addEventListener("click", function () {
+
+    const value = document.getElementById("search-value").value;
+    // console.log("search",value );
+
+    for (let i = 0; i < servicesArray.length; i++) {
+        const element = servicesArray[i];
+        if (value.toLowerCase() == element.vehicle.toLowerCase()) {
+            document.getElementById("main-section").innerHTML = " ";
+
+
+            displayService(element);
+
+
+
+            return;
+
+        }
+
+
+    }
+    // document.getElementById("search-value").value = " ";
+
+    alert("there is no vehicle match")
+
+
+    // console.log('as');
+})
