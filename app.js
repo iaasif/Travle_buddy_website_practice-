@@ -22,6 +22,24 @@ var busObject = {
 
 
 
+//
+const servicesArray = [bikeObject,carObject,busObject];
+
+
+
+
+
+function displayAllArticles (arr){
+    for ( let i=0;i <arr.length;i++){
+        const element = arr[i];
+        // console.log(element);
+        displayService(element)
+
+    }
+}
+
+displayAllArticles(servicesArray);
+
 
 
 //makeing function for service 
@@ -64,9 +82,9 @@ function displayService(service) {
 
 
 
-displayService(carObject);
-displayService(bikeObject);
-displayService(busObject);
+// displayService(carObject);
+// displayService(bikeObject);
+// displayService(busObject);
 
 
 //handal booking 
@@ -87,8 +105,13 @@ function handleBooking(obj) {
                 </small> <small class="text-muted">capasity: ${obj.capasity}
                 </small></p>
                 <div class="d-flex flex-column" role="search">
-                <input class="form-control me-2" id=${obj.vehicle+"-distance-input"} type="number" placeholder="koto km jaba?" aria-label="Search">
-                <input class="form-control me-2" id=${obj.vehicle+"-quantity-input"}  type="number" placeholder="koyta lagbe gari ?" aria-label="Search">
+                <p> Fare: <small class="text-muted" id="fare"  > </small></p>
+                <p> Tax: <small class="text-muted" id="tax" > </small></p>
+                <p> TotalCost: <small class="text-muted" id="total-cost" > </small></p>
+
+
+                <input class="form-control me-2" id="distance-input" type="number" placeholder="koto km jaba?" aria-label="Search">
+                <input class="form-control me-2" id="quantity-input"  type="number" placeholder="koyta lagbe gari ?" aria-label="Search">
                 <button class="btn btn-outline-success" id="searchBtn" onclick='calculateCost(${stringifiedObj})' type="submit" >Submit</button>
                 </div>
 
@@ -100,7 +123,18 @@ function handleBooking(obj) {
 
 
 function calculateCost(obj) {
-    // const stringifiedObj = JSON.stringify(obj);
 
-    console.log(obj);
+
+
+    const quantity = document.getElementById("quantity-input").value;
+    const distance = document.getElementById("distance-input").value;
+
+    // console.log(quantity, distance);
+    // console.log(obj.farePerKilo);
+    const fareDiv = document.getElementById("fare");
+
+    fareDiv.innerHTML = quantity * distance * obj.farePerKilo;
+    console.log(fareDiv);
+
+    
 }
