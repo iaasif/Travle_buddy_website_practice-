@@ -32,7 +32,6 @@ const servicesArray = [bikeObject, carObject, busObject];
 function displayAllArticles(arr) {
     for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
-        // console.log(element);
         displayService(element)
 
     }
@@ -82,11 +81,6 @@ function displayService(service) {
 
 
 
-// displayService(carObject);
-// displayService(bikeObject);
-// displayService(busObject);
-
-
 //handal booking 
 
 function handleBooking(obj) {
@@ -129,8 +123,7 @@ function calculateCost(obj) {
     const quantity = document.getElementById("quantity-input").value;
     const distance = document.getElementById("distance-input").value;
 
-    // console.log(quantity, distance);
-    // console.log(obj.farePerKilo);
+
     const fareDiv = document.getElementById("fare");
 
     fareDiv.innerHTML = quantity * distance * obj.farePerKilo;
@@ -145,28 +138,17 @@ function calculateCost(obj) {
 document.getElementById("search-btn").addEventListener("click", function () {
 
     const value = document.getElementById("search-value").value;
-    // console.log("search",value );
 
     for (let i = 0; i < servicesArray.length; i++) {
         const element = servicesArray[i];
         if (value.toLowerCase() == element.vehicle.toLowerCase()) {
             document.getElementById("main-section").innerHTML = " ";
-
-
             displayService(element);
-
-
-
             return;
 
         }
 
 
     }
-    // document.getElementById("search-value").value = " ";
-
     alert("there is no vehicle match")
-
-
-    // console.log('as');
 })
